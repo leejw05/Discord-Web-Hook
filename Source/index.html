@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<title>Discord Web Hook sender</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://cdn.socket.io/socket.io-3.0.1.min.js"></script> <!-- socket.io -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script><!-- jqeury -->
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> <!-- css -->
+<style>
+  label {
+      font-size: 25px;
+  }
+</style>
+<body>
+<div class="w3-container w3-deep-purple">
+  <h2 style="text-align: center">Discord Webhook Sender</h2>
+</div>
+
+
+<div class="w3-container">
+  <p>
+  <label>Web Hook URL</label>
+  <input class="w3-input urltext" type="text"></p>
+  <label>image URL</label>
+  <input class="w3-input imageurltext" type="text"></p>
+  <p>
+  <label>Name</label>
+  <input class="w3-input nametext" type="text"></p>
+  <p>
+  <label>Context</label>
+  <input class="w3-input context" type="text"></p>
+  <button class="w3-button w3-block w3-indigo" style="border-radius: 12px; font-size:20px" type="submit">전송</button>
+  </div>
+  <script>
+      function send(textcalss){
+        return $(textcalss).val()
+      }
+      $(function(){
+      var socket = io.connect();
+
+      socket.on("sucess", function(data){
+        console.log(data)
+      })
+      $('button').click(function(){
+        socket.emit('chat message',send('.urltext') + " DDFF" +send('.imageurltext')+ " DDFF" +send('.nametext') +" DDFF" +send('.context'))
+      }) 
+    });
+  </script>
+</body>
+</html> 
