@@ -1,2 +1,2 @@
 # Discord-Web-Hook
- node_discord_WEB_Hook
+discord-WebHook URL을 사용해서 메세지를보낼수있습니다
